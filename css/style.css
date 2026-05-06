@@ -1,0 +1,158 @@
+/* الألوان والخطوط الأساسية */
+body {
+    background-color: #f5f3ff; font-family: 'Arial', sans-serif; text-align: center;
+    margin: 0; padding: 0; color: #4c1d95;
+}
+
+header { background-color: #7e22ce; color: white; padding: 20px; box-shadow: 0 4px 6px rgba(0,0,0,0.1); }
+
+.app-container {
+    background-color: white; border: 3px dashed #a855f7; border-radius: 15px;
+    margin: 40px auto; width: 95%; max-width: 800px;
+    box-shadow: 0 10px 15px rgba(0,0,0,0.05); overflow: hidden; padding: 20px;
+    min-height: 500px; 
+}
+
+/* تنسيق اللوجو في البوابة */
+.app-logo {
+    width: 150px; 
+    max-width: 80%;
+    border-radius: 50%; 
+    box-shadow: 0 4px 10px rgba(126, 34, 206, 0.15);
+    margin-bottom: 10px;
+    border: 3px solid #e9d5ff;
+    background-color: white;
+}
+
+/* 🌟 تنسيقات شبكة الحروف في البوابة 🌟 */
+.letters-board {
+    border: 2px dashed #a855f7;
+    border-radius: 15px;
+    padding: 20px;
+    margin: 0 auto;
+    max-width: 450px; 
+    background-color: #ffffff;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); 
+    gap: 12px; 
+    direction: rtl; 
+}
+
+.grid-item {
+    background-color: #ffffff;
+    border: 1px solid #e9d5ff;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+    padding: 15px 5px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    aspect-ratio: 1 / 1; 
+}
+
+.active-btn { cursor: pointer; transition: 0.2s; background-color: #faf5ff; border-color: #d8b4fe; }
+.active-btn:hover { transform: translateY(-3px); box-shadow: 0 6px 12px rgba(126, 34, 206, 0.15); border-color: #a855f7; }
+.locked { opacity: 0.4; cursor: not-allowed; background-color: #f9fafb; }
+
+.ar-letter { font-size: 2.2em; font-weight: bold; color: #4c1d95; margin: 0; line-height: 1; }
+.en-letter { font-size: 0.7em; color: #9ca3af; margin-top: 5px; margin-bottom: 0; }
+
+.signature {
+    margin-top: 25px; color: #6b7280; font-size: 0.85em; font-weight: bold;
+    border-top: 1px solid #f3e8ff; padding-top: 15px;
+}
+
+/* 🌟 الأكواد اللي أنا نسيتها للزراير والأقسام 🌟 */
+.en-title { display: block; font-size: 0.5em; color: #9ca3af; font-weight: normal; margin-top: 5px; }
+.en-text { display: block; font-size: 0.75em; color: #9ca3af; font-weight: normal; margin-top: 5px; }
+.en-btn { display: block; font-size: 0.8em; font-weight: normal; opacity: 0.85; margin-top: 3px; }
+
+.menu-list { display: flex; flex-direction: column; gap: 15px; padding: 20px; }
+.menu-btn { background-color: white; border: 2px solid #a855f7; border-radius: 12px; cursor: pointer; padding: 15px 20px; font-size: 1.3em; font-weight: bold; color: #4c1d95; text-align: right; transition: all 0.2s; display: flex; align-items: center; justify-content: flex-start; }
+.menu-btn .icon { margin-left: 15px; font-size: 1.2em; }
+.menu-btn:hover { background-color: #f3e8ff; transform: scale(1.02); }
+
+.back-header { text-align: right; border-bottom: 2px solid #e9d5ff; padding-bottom: 15px; margin-bottom: 20px; display: flex; justify-content: space-between; align-items: center; }
+.back-btn { background-color: transparent; border: none; color: #7e22ce; font-size: 1.2em; font-weight: bold; cursor: pointer; transition: 0.2s; }
+.back-btn:hover { color: #4c1d95; text-decoration: underline; }
+
+.section-view { animation: fadeEffect 0.4s; }
+@keyframes fadeEffect { from {opacity: 0; transform: translateY(10px);} to {opacity: 1; transform: translateY(0);} }
+h2 { font-size: 2em; margin-bottom: 20px; color: #6b21a8; }
+
+.canvas-container { position: relative; width: 200px; height: 200px; margin: 0 auto 20px auto; border: 2px solid #e9d5ff; border-radius: 10px; background-color: white; overflow: hidden; }
+.canvas-bg { position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 1; object-fit: contain; }
+#drawingCanvas { position: absolute; top: 0; left: 0; z-index: 2; cursor: crosshair; }
+
+/* 🌟 تظبيط زراير الألعاب والشغل المعفن اللي زعلنا 🌟 */
+.btn-check, .btn-record { background-color: #a855f7; color: white; border: none; padding: 10px 20px; font-size: 1.1em; border-radius: 8px; cursor: pointer; margin: 5px; transition: 0.2s; font-weight: bold; }
+.btn-check:hover, .btn-record:hover { background-color: #9333ea; }
+.btn-play { background-color: #10b981; color: white; border: none; padding: 10px 20px; font-size: 1.1em; border-radius: 8px; cursor: pointer; margin: 5px; opacity: 0.5; font-weight: bold; }
+.btn-play:not(:disabled):hover { background-color: #059669; }
+.btn-help { background-color: #f59e0b; color: white; border: none; padding: 10px 20px; font-size: 1.1em; border-radius: 8px; cursor: pointer; margin: 5px; transition: 0.2s; font-weight: bold; }
+.btn-help:hover { background-color: #d97706; }
+
+.words-grid { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; max-width: 500px; margin: 0 auto; }
+.word-card { background-color: #faf5ff; border: 2px solid #d8b4fe; border-radius: 15px; padding: 15px; width: 40%; min-width: 150px; cursor: pointer; transition: 0.2s; }
+.bottom-card { width: 50%; } 
+.word-card:hover { transform: scale(1.05); box-shadow: 0 6px 12px rgba(126, 34, 206, 0.2); }
+.word-card img { width: 100%; height: auto; border-radius: 10px; margin-bottom: 10px; }
+.word-card h3 { font-size: 1.1em; color: #7e22ce; margin-top: 0; }
+.word-card p { font-size: 1.5em; font-weight: bold; margin: 0; color: #4c1d95; }
+.teacher-photo { width: 150px; height: 150px; border-radius: 50%; object-fit: cover; border: 4px solid #a855f7; margin-bottom: 15px; }
+hr { border: 1px solid #e9d5ff; margin: 20px 0; }
+
+.letter-boxes { display: flex; justify-content: center; gap: 10px; direction: rtl; min-height: 60px; margin-top: 15px; }
+.answer-box { width: 50px; height: 50px; border: 2px dashed #a855f7; border-radius: 10px; font-size: 1.8em; font-weight: bold; color: #4c1d95; display: flex; align-items: center; justify-content: center; background-color: #faf5ff; cursor: pointer; transition: 0.2s; }
+.answer-box.filled { border-style: solid; background-color: #e9d5ff; }
+
+.scrambled-container { display: flex; justify-content: center; gap: 15px; flex-wrap: wrap; direction: rtl; }
+.letter-btn { background-color: white; border: 2px solid #a855f7; border-radius: 10px; width: 50px; height: 50px; font-size: 1.8em; font-weight: bold; color: #7e22ce; cursor: pointer; transition: 0.2s; box-shadow: 0 4px 6px rgba(168,85,247,0.1); }
+.letter-btn:hover { background-color: #f3e8ff; transform: translateY(-3px); }
+.letter-btn.hidden { visibility: hidden; }
+
+/* 🌟 الشاشة المقسومة (على الكمبيوتر) 🌟 */
+@media (min-width: 850px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start; 
+        background-color: #f5f3ff;
+    }
+    
+    body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 45%; 
+        height: 100vh;
+        background: url('../images/family.png') center center no-repeat;
+        background-size: cover; /* عشان تغطي المكان كويس */
+        z-index: -1;
+    }
+
+    header {
+        width: 45%; 
+        margin-right: 5%; 
+        border-radius: 0 0 20px 20px;
+    }
+
+    main {
+        width: 55%; 
+        padding-right: 5%; 
+        box-sizing: border-box;
+    }
+
+    .app-container {
+        width: 100%;
+        max-width: 600px; 
+        margin: 30px auto; 
+        box-shadow: 0 15px 30px rgba(126, 34, 206, 0.15);
+    }
+}
