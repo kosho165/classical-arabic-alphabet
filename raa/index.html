@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تعلم العربية مع الحاج هشام - حرف الراء</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <header>
+        <h1>هيا نتعلم الحروف العربية<br><span style="font-size: 0.5em; font-weight: normal; color: #e9d5ff;">Let's Learn Arabic Letters</span></h1>
+    </header>
+    
+    <main>
+        <div class="app-container">
+            
+            <div id="splash-screen" style="text-align: center; padding: 40px 20px;">
+                <img src="../images/logo.jpg" alt="Yalla Arabic" class="app-logo">
+                <h1 style="font-size: 4em; color: #7e22ce; margin-bottom: 10px; margin-top: 10px;">حرف الراء (ر)</h1>
+                <h2 style="font-size: 2.5em; color: #a855f7; margin-top: 0; margin-bottom: 40px;">Letter Raa</h2>
+                <button class="btn-record" onclick="startApp()" style="font-size: 1.8em; padding: 15px 60px; border-radius: 50px; box-shadow: 0 8px 20px rgba(168, 85, 247, 0.4);">
+                    ابدأ<br><span class="en-btn" style="font-size: 0.6em;">Start</span>
+                </button>
+            </div>
+
+            <div id="main-menu" class="menu-list" style="display: none;">
+                <div style="text-align: left; margin-bottom: 10px;">
+                    <button class="back-btn" onclick="window.location.href='../index.html'" style="color: #ef4444; font-size: 1em;">🏠 خروج للوحة الرئيسية <span style="font-size: 0.8em; font-weight: normal;">(Main Menu)</span></button>
+                </div>
+                <h2 style="text-align: center; margin-top: 0;">اختر الدرس:<br><span class="en-title">Choose the Lesson:</span></h2>
+                <button class="menu-btn" onclick="openSection('sec-trace')"><span class="icon">✏️</span> 1. الكتابة<br><span class="en-text">Trace the Letter</span></button>
+                <button class="menu-btn" onclick="openSection('sec-words')"><span class="icon">🖼️</span> 2. الكلمات<br><span class="en-text">Words</span></button>
+                <button class="menu-btn" onclick="openSection('sec-pronounce')"><span class="icon">🎤</span> 3. اسمع وسجل<br><span class="en-text">Listen & Record</span></button>
+                <button class="menu-btn" onclick="openSection('sec-challenge')"><span class="icon">🎯</span> 4. تحدي الكلمات<br><span class="en-text">Word Challenge</span></button>
+                <button class="menu-btn" onclick="openSection('sec-arrange')"><span class="icon">🧩</span> 5. ترتيب الحروف<br><span class="en-text">Arrange Letters</span></button>
+            </div>
+
+            <div id="content-area" style="display: none;">
+                <div class="back-header">
+                    <button class="back-btn" onclick="backToMenu()">🔙 قائمة الحرف <span style="font-size: 0.8em; font-weight: normal;">(Letter Menu)</span></button>
+                    <button class="back-btn" onclick="window.location.href='../index.html'" style="color: #ef4444;">🏠 اللوحة الرئيسية <span style="font-size: 0.8em; font-weight: normal;">(Main Menu)</span></button>
+                </div>
+
+                <div id="sec-trace" class="section-view">
+                    <h2>امشِ بإصبعك على الحرف<br><span class="en-title">Trace the letter with your finger</span></h2>
+                    <div class="canvas-container">
+                        <img src="images/letter-r.jpg" alt="راء" class="canvas-bg">
+                        <canvas id="drawingCanvas" width="200" height="200"></canvas>
+                    </div>
+                    <button class="btn-check" onclick="playSound('audio-letter-r')">اسمع<br><span class="en-btn">Listen</span></button>
+                    <button class="btn-check" onclick="clearCanvas()">مسح<br><span class="en-btn">Erase</span></button>
+                    <button class="btn-check" onclick="checkDrawing()">خلصت!<br><span class="en-btn">Done!</span></button>
+                </div>
+
+                <div id="sec-words" class="section-view">
+                    <h2>أشكال الحرف في الكلمة<br><span class="en-title">Letter forms in words</span></h2>
+                    <div class="words-grid">
+                        <div class="word-card" onclick="playSound('audio-r-start')">
+                            <h3>أول الكلمة<br><span class="en-text">Beginning</span></h3>
+                            <img src="images/r-start.jpg" alt="ريشة">
+                            <p>رِيشَة</p>
+                        </div>
+                        <div class="word-card" onclick="playSound('audio-r-mid')">
+                            <h3>وسط الكلمة<br><span class="en-text">Middle</span></h3>
+                            <img src="images/r-mid.jpg" alt="فراشة">
+                            <p>فَرَاشَة</p>
+                        </div>
+                        <div class="word-card bottom-card" onclick="playSound('audio-r-end')">
+                            <h3>آخر الكلمة<br><span class="en-text">End</span></h3>
+                            <img src="images/r-end.jpg" alt="قطار">
+                            <p>قِطَار</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sec-pronounce" class="section-view">
+                    <h2>اسمع وسجل<br><span class="en-title">Listen & Record</span></h2>
+                    <img src="../images/hisham-photo.jpg" alt="الحاج هشام" class="teacher-photo">
+                    <p style="font-weight: bold;">اسمع نطق المعلم، ثم سجل صوتك وقارن<br><span class="en-text" style="font-size: 0.9em;">Listen to the teacher, then record your voice and compare</span></p>
+                    <div class="audio-controls">
+                        <button class="btn-check" onclick="playSound('audio-letter-r')">🔊 الحرف<br><span class="en-btn">Letter</span></button>
+                        <button class="btn-check" onclick="playSound('audio-r-start')">🔊 رِيشَة<br><span class="en-btn">Reesha</span></button>
+                        <button class="btn-check" onclick="playSound('audio-r-mid')">🔊 فَرَاشَة<br><span class="en-btn">Farasha</span></button>
+                        <button class="btn-check" onclick="playSound('audio-r-end')">🔊 قِطَار<br><span class="en-btn">Qitaar</span></button>
+                    </div>
+                    <hr>
+                    <button class="btn-record" id="recordBtn" onclick="toggleRecording()">🎤 سجل صوتك<br><span class="en-btn">Record your voice</span></button>
+                    <button class="btn-play" id="playBtn" onclick="playRecording()" disabled>▶️ اسمع تسجيلك<br><span class="en-btn">Play your recording</span></button>
+                </div>
+
+                <div id="sec-challenge" class="section-view">
+                    <h2>تحدي الكلمات<br><span class="en-title">Word Challenge</span></h2>
+                    <div id="result-screen" style="display: none; padding: 20px;">
+                        <h1 id="result-text" style="color: #7e22ce;"></h1>
+                        <p id="result-percentage" style="font-size: 1.5em; font-weight: bold;"></p>
+                        <p style="font-size: 1.2em; color: #10b981;">إجابات صحيحة (Correct): <span id="final-correct">0</span></p>
+                        <p style="font-size: 1.2em; color: #ef4444;">إجابات خاطئة (Wrong): <span id="final-wrong">0</span></p>
+                        <button class="btn-record" onclick="resetChallenge()" style="margin-top: 20px;">🔄 العب مرة أخرى<br><span class="en-btn">Play Again</span></button>
+                    </div>
+                    <div id="game-screen">
+                        <div id="game-stats" style="margin-bottom: 15px; font-size: 1.1em; font-weight: bold; color: #6b21a8; background-color: #f3e8ff; padding: 10px; border-radius: 10px;">
+                            السؤال (Question): <span id="current-q">0</span> من 9 <br>
+                            <span style="color: #10b981;">✔️ صح (Correct): <span id="current-score">0</span></span> | 
+                            <span style="color: #ef4444;">❌ خطأ (Wrong): <span id="wrong-score">0</span></span>
+                        </div>
+                        <p style="font-weight: bold;">اسمع الكلمة ثم اختر الصورة الصحيحة:<br><span class="en-text" style="font-size: 0.9em;">Listen to the word, then choose the correct picture:</span></p>
+                        <button id="listen-again-btn" class="btn-check" onclick="repeatChallengeSound()" style="margin-bottom: 20px;">🔊 اسمع الكلمة مرة أخرى<br><span class="en-btn">Listen again</span></button>
+                        <div id="challenge-options" class="words-grid">
+                            <button class="btn-record" onclick="startNewChallenge()" style="padding: 15px 30px;">ابدأ التحدي<br><span class="en-btn">Start Challenge</span></button>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="sec-arrange" class="section-view">
+                    <h2>ترتيب الحروف<br><span class="en-title">Arrange Letters</span></h2>
+                    <div id="arrange-result-screen" style="display: none; padding: 20px;">
+                        <h1 style="color: #7e22ce;">أحسنت! أكملت كل الكلمات!<br><span class="en-title" style="font-size: 0.5em; color: #a855f7;">Well done! You completed all words!</span></h1>
+                        <p style="font-size: 1.2em; color: #10b981;">كلمات صحيحة (Correct): <span id="arrange-final-correct">0</span></p>
+                        <p style="font-size: 1.2em; color: #ef4444;">محاولات خاطئة (Wrong): <span id="arrange-final-wrong">0</span></p>
+                        <button class="btn-record" onclick="resetArrangeGame()" style="margin-top: 20px;">🔄 العب مرة أخرى<br><span class="en-btn">Play Again</span></button>
+                    </div>
+                    <div id="arrange-game-screen">
+                        <div id="arrange-stats" style="margin-bottom: 15px; font-size: 1.1em; font-weight: bold; color: #6b21a8; background-color: #f3e8ff; padding: 10px; border-radius: 10px;">
+                            الكلمة (Word): <span id="arrange-current-q">1</span> من 6 <br>
+                            <span style="color: #10b981;">✔️ صح (Correct): <span id="arrange-current-score">0</span></span> | 
+                            <span style="color: #ef4444;">❌ خطأ (Wrong): <span id="arrange-wrong-score">0</span></span>
+                        </div>
+                        <button class="btn-check" onclick="playArrangeSound()" style="margin-bottom: 15px;">🔊 اسمع الكلمة<br><span class="en-btn">Listen</span></button>
+                        <button class="btn-help" onclick="useHelp()" style="margin-bottom: 15px;">💡 مساعدة<br><span class="en-btn">Help</span></button>
+                        <div style="margin-bottom: 20px;">
+                            <img id="arrange-img" src="" alt="صورة الكلمة" style="width: 150px; border-radius: 10px; border: 3px solid #d8b4fe; display: none; margin: 0 auto;">
+                        </div>
+                        <div id="answer-boxes" class="letter-boxes"></div>
+                        <p id="arrange-hint" style="color: gray; margin-top: 20px; display: none; font-weight: bold;">اضغط على الحروف لترتيبها:<br><span class="en-text">Tap the letters to arrange them:</span></p>
+                        <div id="scrambled-letters" class="scrambled-container"></div>
+                        <button class="btn-record" onclick="startArrangeGame()" id="start-arrange-btn" style="padding: 15px 30px; margin-top: 20px;">ابدأ اللعبة<br><span class="en-btn">Start Game</span></button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <audio id="audio-letter-r" src="audio/letter-r.mp3"></audio>
+    <audio id="audio-well-done" src="audio/well-done.mp3"></audio>
+    <audio id="audio-wrong" src="audio/wrong.mp3"></audio>
+    <audio id="audio-r-start" src="audio/r-start.mp3"></audio>
+    <audio id="audio-r-mid" src="audio/r-mid.mp3"></audio>
+    <audio id="audio-r-end" src="audio/r-end.mp3"></audio>
+
+    <script>
+        function startApp() { document.getElementById('splash-screen').style.display = 'none'; document.getElementById('main-menu').style.display = 'flex'; }
+        function openSection(sectionId) { document.getElementById('main-menu').style.display = 'none'; document.getElementById('content-area').style.display = 'block'; var sections = document.getElementsByClassName("section-view"); for (var i = 0; i < sections.length; i++) { sections[i].style.display = "none"; } document.getElementById(sectionId).style.display = "block"; if(sectionId === 'sec-challenge') resetChallenge(); if(sectionId === 'sec-arrange') resetArrangeGame(); }
+        function backToMenu() { document.getElementById('content-area').style.display = 'none'; document.getElementById('main-menu').style.display = 'flex'; }
+        function playSound(audioId) { var audio = document.getElementById(audioId); if (audio) { audio.currentTime = 0; audio.play(); } }
+
+        const canvas = document.getElementById('drawingCanvas'); const ctx = canvas.getContext('2d');
+        let isDrawing = false, hasDrawn = false; let minX = 200, maxX = 0, minY = 200, maxY = 0; 
+        ctx.strokeStyle = '#9333ea'; ctx.lineWidth = 15; ctx.lineCap = 'round';
+        canvas.addEventListener('mousedown', startPosition); canvas.addEventListener('mouseup', endPosition); canvas.addEventListener('mousemove', draw);
+        canvas.addEventListener('touchstart', startPositionTouch, {passive: false}); canvas.addEventListener('touchend', endPosition); canvas.addEventListener('touchmove', drawTouch, {passive: false});
+        function startPosition(e) { isDrawing = true; draw(e); } function startPositionTouch(e) { e.preventDefault(); isDrawing = true; drawTouch(e); } function endPosition() { isDrawing = false; ctx.beginPath(); }
+        function checkBoundaries(x, y) { if (x < minX) minX = x; if (x > maxX) maxX = x; if (y < minY) minY = y; if (y > maxY) maxY = y; }
+        function draw(e) { if (!isDrawing) return; hasDrawn = true; const rect = canvas.getBoundingClientRect(); const x = e.clientX - rect.left; const y = e.clientY - rect.top; checkBoundaries(x, y); ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y); }
+        function drawTouch(e) { if (!isDrawing) return; e.preventDefault(); hasDrawn = true; const rect = canvas.getBoundingClientRect(); const touch = e.touches[0]; const x = touch.clientX - rect.left; const y = touch.clientY - rect.top; checkBoundaries(x, y); ctx.lineTo(x, y); ctx.stroke(); ctx.beginPath(); ctx.moveTo(x, y); }
+        function clearCanvas() { ctx.clearRect(0, 0, canvas.width, canvas.height); hasDrawn = false; minX = 200; maxX = 0; minY = 200; maxY = 0; }
+        
+        function checkDrawing() { 
+            let width = maxX - minX; 
+            let height = maxY - minY;
+            if (hasDrawn === false) { playSound('audio-wrong'); } 
+            else if (width < 30 || height < 50) { playSound('audio-wrong'); }
+            else { playSound('audio-well-done'); } 
+        }
+
+        let mediaRecorder; let audioChunks = []; let userAudio = new Audio(); let isRecording = false;
+        async function toggleRecording() { const recordBtn = document.getElementById('recordBtn'); const playBtn = document.getElementById('playBtn'); if (!isRecording) { try { const stream = await navigator.mediaDevices.getUserMedia({ audio: true }); mediaRecorder = new MediaRecorder(stream); mediaRecorder.ondataavailable = event => { audioChunks.push(event.data); }; mediaRecorder.onstop = () => { const audioBlob = new Blob(audioChunks, { type: 'audio/mp3' }); userAudio.src = URL.createObjectURL(audioBlob); playBtn.disabled = false; playBtn.style.opacity = "1"; }; audioChunks = []; mediaRecorder.start(); isRecording = true; recordBtn.innerHTML = "⏹️ إيقاف التسجيل<br><span class='en-btn'>Stop recording</span>"; recordBtn.style.backgroundColor = "#dc2626"; } catch (err) { alert("يجب السماح باستخدام الميكروفون."); } } else { mediaRecorder.stop(); isRecording = false; recordBtn.innerHTML = "🎤 سجل صوتك<br><span class='en-btn'>Record your voice</span>"; recordBtn.style.backgroundColor = "#a855f7"; } }
+        function playRecording() { if (userAudio.src) { userAudio.currentTime = 0; userAudio.play(); } }
+
+        const challengeData = [ { id: 'start', img: 'images/r-start.jpg', audio: 'audio-r-start' }, { id: 'mid', img: 'images/r-mid.jpg', audio: 'audio-r-mid' }, { id: 'end', img: 'images/r-end.jpg', audio: 'audio-r-end' } ];
+        let score = 0, wrongScore = 0, questionCount = 0, currentChallengeId = '', isWaitingNext = false, gameSequence = []; const maxQuestions = 9; 
+        function resetChallenge() { score = 0; wrongScore = 0; questionCount = 0; isWaitingNext = false; gameSequence = [...challengeData, ...challengeData, ...challengeData].sort(() => 0.5 - Math.random()); document.getElementById('game-screen').style.display = 'block'; document.getElementById('result-screen').style.display = 'none'; document.getElementById('current-q').innerText = questionCount; document.getElementById('current-score').innerText = score; document.getElementById('wrong-score').innerText = wrongScore; document.getElementById('challenge-options').innerHTML = '<button class="btn-record" onclick="startNewChallenge()">ابدأ التحدي<br><span class="en-btn">Start Challenge</span></button>'; }
+        function startNewChallenge() { if (questionCount >= maxQuestions) { showFinalResult(); return; } isWaitingNext = false; const target = gameSequence[questionCount]; currentChallengeId = target.id; questionCount++; document.getElementById('current-q').innerText = questionCount; playSound(target.audio); let shuffledOptions = [...challengeData].sort(() => 0.5 - Math.random()); const container = document.getElementById('challenge-options'); container.innerHTML = ''; shuffledOptions.forEach(item => { const card = document.createElement('div'); card.className = 'word-card'; card.onclick = () => checkChallengeAnswer(item.id); card.innerHTML = `<img src="${item.img}" alt="صورة">`; container.appendChild(card); }); }
+        function repeatChallengeSound() { const target = challengeData.find(item => item.id === currentChallengeId); if(target) playSound(target.audio); }
+        function checkChallengeAnswer(selectedId) { if (!currentChallengeId || isWaitingNext) return; isWaitingNext = true; if (selectedId === currentChallengeId) { score++; document.getElementById('current-score').innerText = score; playSound('audio-well-done'); } else { wrongScore++; document.getElementById('wrong-score').innerText = wrongScore; playSound('audio-wrong'); } currentChallengeId = ''; setTimeout(startNewChallenge, 1500); }
+        function showFinalResult() { document.getElementById('game-screen').style.display = 'none'; document.getElementById('result-screen').style.display = 'block'; const percentage = Math.round((score / maxQuestions) * 100); document.getElementById('result-text').innerText = percentage >= 80 ? "أحسنت يا بطل!" : "حاول مرة أخرى!"; document.getElementById('result-percentage').innerText = `نتيجتك: ${percentage}%`; document.getElementById('final-correct').innerText = score; document.getElementById('final-wrong').innerText = wrongScore; }
+
+        const arrangeWords = [ 
+            { word: 'رِيشَة', letters: ['ر', 'ي', 'ش', 'ة'], img: 'images/r-start.jpg', audio: 'audio-r-start' }, 
+            { word: 'فَرَاشَة', letters: ['ف', 'ر', 'ا', 'ش', 'ة'], img: 'images/r-mid.jpg', audio: 'audio-r-mid' }, 
+            { word: 'قِطَار', letters: ['ق', 'ط', 'ا', 'ر'], img: 'images/r-end.jpg', audio: 'audio-r-end' } 
+        ];
+        
+        // 🌟 6 جولات 🌟
+        const arrangeGameSequence = [ arrangeWords[0], arrangeWords[1], arrangeWords[2], arrangeWords[0], arrangeWords[1], arrangeWords[2] ];
+
+        let currentArrangeIndex = 0, currentArrangeWord = null, selectedLetters = [], scrambledArray = [], arrangeScore = 0, arrangeWrongScore = 0;
+        function resetArrangeGame() { currentArrangeIndex = 0; arrangeScore = 0; arrangeWrongScore = 0; document.getElementById('arrange-result-screen').style.display = 'none'; document.getElementById('arrange-game-screen').style.display = 'block'; document.getElementById('start-arrange-btn').style.display = 'inline-block'; document.getElementById('answer-boxes').innerHTML = ''; document.getElementById('scrambled-letters').innerHTML = ''; document.getElementById('arrange-img').style.display = 'none'; document.getElementById('arrange-hint').style.display = 'none'; document.getElementById('arrange-current-q').innerText = currentArrangeIndex + 1; document.getElementById('arrange-current-score').innerText = arrangeScore; document.getElementById('arrange-wrong-score').innerText = arrangeWrongScore; }
+        function startArrangeGame() { document.getElementById('start-arrange-btn').style.display = 'none'; document.getElementById('arrange-img').style.display = 'block'; document.getElementById('arrange-hint').style.display = 'block'; loadArrangeWord(); }
+        
+        function loadArrangeWord() { 
+            if (currentArrangeIndex >= arrangeGameSequence.length) { 
+                document.getElementById('arrange-game-screen').style.display = 'none'; 
+                document.getElementById('arrange-result-screen').style.display = 'block'; 
+                document.getElementById('arrange-final-correct').innerText = arrangeScore; 
+                document.getElementById('arrange-final-wrong').innerText = arrangeWrongScore; 
+                playSound('audio-well-done');
+                localStorage.setItem('completed_raa', 'true'); // 🌟 سطر النور 🌟
+                return; 
+            } 
+            currentArrangeWord = arrangeGameSequence[currentArrangeIndex]; 
+            selectedLetters = new Array(currentArrangeWord.letters.length).fill(null); 
+            document.getElementById('arrange-current-q').innerText = currentArrangeIndex + 1;
+            document.getElementById('arrange-img').src = currentArrangeWord.img; 
+            playSound(currentArrangeWord.audio); 
+            const answerBoxes = document.getElementById('answer-boxes'); 
+            answerBoxes.innerHTML = ''; 
+            for (let i = 0; i < currentArrangeWord.letters.length; i++) { 
+                const box = document.createElement('div'); 
+                box.className = 'answer-box'; 
+                box.onclick = () => removeLetter(i); 
+                answerBoxes.appendChild(box); 
+            } 
+            scrambledArray = [...currentArrangeWord.letters].map((letter, index) => ({ letter, id: index })).sort(() => 0.5 - Math.random()); 
+            renderScrambledLetters(); 
+        }
+        
+        function renderScrambledLetters() { const container = document.getElementById('scrambled-letters'); container.innerHTML = ''; scrambledArray.forEach(item => { const btn = document.createElement('button'); btn.className = 'letter-btn'; btn.innerText = item.letter; if (selectedLetters.find(s => s && s.id === item.id)) btn.classList.add('hidden'); else btn.onclick = () => addLetter(item); container.appendChild(btn); }); updateAnswerBoxes(); }
+        function addLetter(item) { const emptyIndex = selectedLetters.findIndex(val => val === null); if (emptyIndex !== -1) { selectedLetters[emptyIndex] = item; renderScrambledLetters(); checkArrangeWin(); } }
+        function removeLetter(index) { if (selectedLetters[index] !== null) { selectedLetters[index] = null; renderScrambledLetters(); } }
+        function updateAnswerBoxes() { const boxes = document.getElementById('answer-boxes').children; for (let i = 0; i < boxes.length; i++) { if (selectedLetters[i] !== null) { boxes[i].innerText = selectedLetters[i].letter; boxes[i].classList.add('filled'); } else { boxes[i].innerText = ''; boxes[i].classList.remove('filled'); } } }
+        function checkArrangeWin() { if (selectedLetters.includes(null)) return; if (selectedLetters.map(item => item.letter).join('') === currentArrangeWord.letters.join('')) { arrangeScore++; document.getElementById('arrange-current-score').innerText = arrangeScore; playSound('audio-well-done'); currentArrangeIndex++; setTimeout(loadArrangeWord, 1500); } else { arrangeWrongScore++; document.getElementById('arrange-wrong-score').innerText = arrangeWrongScore; playSound('audio-wrong'); setTimeout(() => { selectedLetters = new Array(currentArrangeWord.letters.length).fill(null); renderScrambledLetters(); }, 1000); } }
+        function useHelp() { if (!currentArrangeWord) return; const correctLetters = currentArrangeWord.letters; for (let i = 0; i < correctLetters.length; i++) { if (selectedLetters[i] === null || selectedLetters[i].letter !== correctLetters[i]) { if (selectedLetters[i] !== null) selectedLetters[i] = null; const availableItem = scrambledArray.find(item => item.letter === correctLetters[i] && !selectedLetters.find(s => s && s.id === item.id)); if (availableItem) { selectedLetters[i] = availableItem; renderScrambledLetters(); checkArrangeWin(); break; } } } }
+        function playArrangeSound() { if(currentArrangeWord) playSound(currentArrangeWord.audio); }
+    </script>
+</body>
+</html>
