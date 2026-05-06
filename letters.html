@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>يلا نتعلم الحروف العربية</title>
+    <style>
+        body { background-color: #f5f0ff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; padding: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; }
+        .main-wrapper { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 50px; max-width: 1200px; padding: 20px; width: 100%; flex-direction: row-reverse; } 
+        .image-column { flex: 1; max-width: 500px; display: flex; justify-content: center; }
+        .family-image { width: 100%; border-radius: 15px; object-fit: cover; }
+        .content-column { flex: 1; max-width: 480px; display: flex; flex-direction: column; gap: 20px; }
+        .header-banner { background-color: #8b5cf6; color: white; width: 100%; padding: 25px 20px; text-align: center; border-radius: 15px; box-sizing: border-box; box-shadow: 0 4px 15px rgba(139, 92, 246, 0.2); }
+        .header-banner h1 { margin: 0; font-size: 1.8em; font-weight: bold; }
+        .header-banner p { margin: 5px 0 0; font-size: 1em; opacity: 0.9; }
+        .letters-container { background: white; border: 2px dashed #c4b5fd; border-radius: 20px; padding: 30px 20px; width: 100%; text-align: center; box-sizing: border-box; }
+        .logo-img { width: 90px; margin-bottom: 15px; border-radius: 50%; }
+        .letters-container h2 { color: #5b21b6; margin: 0 0 5px 0; font-size: 1.5em; }
+        .letters-container p.subtitle { color: #6b7280; margin: 0 0 25px 0; font-size: 0.9em; }
+        .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; }
+        
+        /* رجعنا شكل الماوس عشان يبان إنه بيتكلك عليه */
+        .letter-card { background: white; border: 1px solid #ede9fe; border-radius: 12px; padding: 15px 5px; text-align: center; transition: all 0.3s ease; cursor: pointer; }
+        .letter-card:hover { background: #f5f3ff; border-color: #c4b5fd; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(139, 92, 246, 0.1); }
+        
+        .arabic-char { display: block; font-size: 1.8em; font-weight: bold; color: #6d28d9; margin-bottom: 2px; }
+        .english-name { display: block; font-size: 0.75em; color: #9ca3af; text-transform: capitalize; }
+        .footer-credit { margin-top: 30px; padding-top: 15px; border-top: 1px solid #f3f4f6; font-weight: bold; color: #8b5cf6; font-size: 0.9em; }
+        @media (max-width: 768px) { .main-wrapper { flex-direction: column; } }
+    </style>
+</head>
+<body>
+
+    <div class="main-wrapper">
+        <div class="image-column">
+            <img src="images/family.png" class="family-image" alt="عائلة تتعلم">
+        </div>
+
+        <div class="content-column">
+            <div class="header-banner">
+                <h1>يلا نتعلم الحروف العربية</h1>
+                <p>Let's Learn Arabic Letters</p>
+            </div>
+
+            <div class="letters-container">
+                <img src="images/logo.jpg" class="logo-img" alt="Logo">
+                <h2>اختر الحرف لتبدأ التعلم</h2>
+                <p class="subtitle">Choose the Letter to Start Learning</p>
+
+                <div class="grid" id="lettersGrid"></div>
+
+                <div class="footer-credit">Created by : Hisham Embaby</div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ربطنا كل حرف باسم الفولدر بتاعه بالظبط زي ما إنت عاملهم
+        const letters = [
+            {ar: 'أ', folder: 'alef'}, {ar: 'ب', folder: 'baa'}, {ar: 'ت', folder: 'taa'}, {ar: 'ث', folder: 'thaa'},
+            {ar: 'ج', folder: 'jeem'}, {ar: 'ح', folder: 'haa'}, {ar: 'خ', folder: 'khaa'}, {ar: 'د', folder: 'daal'},
+            {ar: 'ذ', folder: 'thaal'}, {ar: 'ر', folder: 'raa'}, {ar: 'ز', folder: 'zaay'}, {ar: 'س', folder: 'seen'},
+            {ar: 'ش', folder: 'sheen'}, {ar: 'ص', folder: 'saad'}, {ar: 'ض', folder: 'daad'}, {ar: 'ط', folder: 'ttaa'},
+            {ar: 'ظ', folder: 'zhaa'}, {ar: 'ع', folder: 'ain'}, {ar: 'غ', folder: 'ghain'}, {ar: 'ف', folder: 'faa'},
+            {ar: 'ق', folder: 'qaaf'}, {ar: 'ك', folder: 'kaaf'}, {ar: 'ل', folder: 'laam'}, {ar: 'م', folder: 'meem'},
+            {ar: 'ن', folder: 'noon'}, {ar: 'هـ', folder: 'hah'}, {ar: 'و', folder: 'waw'}, {ar: 'ي', folder: 'yaa'}
+        ];
+
+        const grid = document.getElementById('lettersGrid');
+        letters.forEach(l => {
+            const card = document.createElement('div');
+            card.className = 'letter-card';
+            card.innerHTML = `<span class="arabic-char">${l.ar}</span><span class="english-name">${l.folder}</span>`;
+            
+            // السطر ده هو اللي هيفتح الفولدر لما الطالب يدوس على الحرف
+            card.onclick = () => {
+                window.location.href = l.folder + '/index.html';
+            };
+            
+            grid.appendChild(card);
+        });
+    </script>
+</body>
+</html>
